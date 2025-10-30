@@ -2,6 +2,7 @@ extends RigidBody2D
 
 @export var JUMP_VECTOR = 0
 
+var is_holding := false
 var start : Vector2
 var end : Vector2
 var sling_vector : Vector2
