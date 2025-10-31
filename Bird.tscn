@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjo7rfra00wfe"]
+
+[ext_resource type="Script" uid="uid://bgsxf8c7px801" path="res://slingshot.gd" id="1_3udoi"]
+[ext_resource type="Texture2D" uid="uid://bo0n60vfhew0s" path="res://icon.svg" id="2_8an33"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_24d08"]
+friction = 0.16
+bounce = 0.33
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxo8o"]
+size = Vector2(120, 124)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_24d08")
+script = ExtResource("1_3udoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8an33")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gxo8o")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 5.0
+default_color = Color(1, 0, 0, 1)
