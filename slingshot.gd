@@ -36,7 +36,10 @@ func _process(delta: float) -> void:
 			is_holding = false
 			Engine.time_scale = 1.0 
 			linear_velocity = Vector2.ZERO
-			apply_impulse(-sling_vector * JUMP_VECTOR)
+			var jump = -sling_vector * JUMP_VECTOR
+			Global.slingshot.emit(jump)
+			jump.x = 0
+			apply_impulse(jump)
 			if trajectory_line:
 				trajectory_line.clear_points()
 
