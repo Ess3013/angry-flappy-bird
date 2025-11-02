@@ -1,9 +1,13 @@
+class_name Slingshot
+
 extends RigidBody2D
 
 @export var JUMP_VECTOR: float = 5.0 
 @export var SLOW_MO_SCALE: float = 0.1
 
 @onready var trajectory_line: Line2D = $Line2D
+
+signal slingshot(force: Vector2)
 
 var is_holding := false
 var start := Vector2.ZERO
@@ -37,7 +41,7 @@ func _process(delta: float) -> void:
 			Engine.time_scale = 1.0 
 			linear_velocity = Vector2.ZERO
 			var jump = -sling_vector * JUMP_VECTOR
-			Global.slingshot.emit(jump)
+			slingshot.emit(jump)
 			jump.x = 0
 			apply_impulse(jump)
 			if trajectory_line:

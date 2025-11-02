@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://xfo4fggcduom"]
+
+[ext_resource type="Script" uid="uid://isvrbtpkoc5h" path="res://root.gd" id="1_170dk"]
+[ext_resource type="PackedScene" uid="uid://bjo7rfra00wfe" path="res://Bird.tscn" id="1_gxo8o"]
+[ext_resource type="PackedScene" uid="uid://bnvt4kxpvemxo" path="res://WallPair.tscn" id="2_24d08"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_170dk")
+
+[node name="Bird" parent="." instance=ExtResource("1_gxo8o")]
+position = Vector2(364, 280)
+
+[node name="Node2D" parent="." instance=ExtResource("2_24d08")]
+position = Vector2(1304, 0)

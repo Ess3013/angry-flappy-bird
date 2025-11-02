@@ -8,6 +8,7 @@ size = Vector2(128, 640)
 
 [node name="Node2D" type="RigidBody2D"]
 gravity_scale = 0.0
+lock_rotation = true
 script = ExtResource("1_svc8i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
