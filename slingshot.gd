@@ -7,7 +7,10 @@ extends RigidBody2D
 
 @onready var trajectory_line: Line2D = $Line2D
 
+var enabled = true
+
 signal slingshot(force: Vector2)
+signal dead
 
 var is_holding := false
 var start := Vector2.ZERO
@@ -22,30 +25,34 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# 1. When player first presses
-	if Input.is_action_just_pressed("touch"):
-		is_holding = true
-		start = get_global_mouse_position()
-		Engine.time_scale = SLOW_MO_SCALE
-		if trajectory_line:
-			trajectory_line.clear_points()
-	# 2. While player is holding
-	if is_holding:
-		end = get_global_mouse_position()
-		sling_vector = end - start
-		if trajectory_line:
-			draw_trajectory(sling_vector)
-	# 3. When player releases
-	if Input.is_action_just_released("touch"):
-		if is_holding:
-			is_holding = false
-			Engine.time_scale = 1.0 
-			linear_velocity = Vector2.ZERO
-			var jump = -sling_vector * JUMP_VECTOR
-			slingshot.emit(jump)
-			jump.x = 0
-			apply_impulse(jump)
+	if enabled:
+		if Input.is_action_just_pressed("touch"):
+			is_holding = true
+			start = get_global_mouse_position()
+			Engine.time_scale = SLOW_MO_SCALE
 			if trajectory_line:
 				trajectory_line.clear_points()
+		# 2. While player is holding
+		if is_holding:
+			end = get_global_mouse_position()
+			sling_vector = end - start
+			if trajectory_line:
+				draw_trajectory(sling_vector)
+		# 3. When player releases
+		if Input.is_action_just_released("touch"):
+			if is_holding:
+				is_holding = false
+				Engine.time_scale = 1.0 
+				linear_velocity = Vector2.ZERO
+				var jump = -sling_vector * JUMP_VECTOR
+				slingshot.emit(jump)
+				jump.x = 0
+				apply_impulse(jump)
+				if trajectory_line:
+					trajectory_line.clear_points()
+	if linear_velocity.x < 0 or position.y <-1 or position.y > 1081:
+		enabled = false
+		dead.emit()
 
 func draw_trajectory(current_sling_vector: Vector2) -> void:
 	trajectory_line.clear_points()
