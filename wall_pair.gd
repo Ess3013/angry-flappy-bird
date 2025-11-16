@@ -53,21 +53,17 @@ func _process(delta: float) -> void:
 func reset_position(x_pos): # Renamed variable to avoid shadowing
 	# 1. Get the raw noise value (ranges from -1.0 to 1.0)
 	var noise_value = noise.get_noise_1d(noise_x_index)
-	print(noise_value)
 	
 	# 2. Increment our position on the noise line for the *next* reset
 	noise_x_index += noise_step
-	print(noise_x_index)
 	
 	# 3. Map the noise value from [-1.0, 1.0] to your desired Y-range
 	# We use the remap() function for this:
 	# remap(value, from_min, from_max, to_min, to_max)
 	y_position = remap(noise_value, -1.0, 1.0, min_y_position, max_y_position)
-	print(y_position)
 	
 	# --- The rest of your function ---
 	position.y = y_position
 	global_position.x = x_pos
 	if linear_velocity.x < 0:
 		linear_velocity.x *= 0.8
-	print_debug(position.y)

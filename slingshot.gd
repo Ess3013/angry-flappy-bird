@@ -20,8 +20,6 @@ var gravity := Vector2.ZERO
 
 func _ready() -> void:
 	gravity = Vector2(0, ProjectSettings.get_setting("physics/2d/default_gravity") * gravity_scale)
-	if not trajectory_line:
-		print_debug("Trajectory Line2D node not found! Please add a Line2D child.")
 
 func _process(delta: float) -> void:
 	# 1. When player first presses
