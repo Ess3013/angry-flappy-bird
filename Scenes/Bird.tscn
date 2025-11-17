@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ych8cv5cwtn8"]
+[gd_scene load_steps=5 format=3 uid="uid://bjo7rfra00wfe"]
 
-[ext_resource type="Script" uid="uid://cmoc7q5mkjt28" path="res://Scripts/slingshot.gd" id="1_3udoi"]
+[ext_resource type="Script" uid="uid://cmoc7q5mkjt28" path="res://Scripts/slingshot.gd" id="1_806kn"]
 [ext_resource type="Texture2D" uid="uid://bo0n60vfhew0s" path="res://icon.svg" id="2_8an33"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_24d08"]
@@ -12,7 +12,7 @@ size = Vector2(120, 124)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_24d08")
-script = ExtResource("1_3udoi")
+script = ExtResource("1_806kn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8an33")

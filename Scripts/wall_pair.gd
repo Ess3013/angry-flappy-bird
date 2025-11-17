@@ -1,4 +1,5 @@
 class_name WallPair
+
 extends RigidBody2D
 
 @export var x_position = 2500

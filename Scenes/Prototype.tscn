@@ -1,18 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://byw0fgpm6kg85"]
 
-[ext_resource type="Script" uid="uid://b8y7fkdrkkykw" path="res://prototype.gd" id="1_1h0e5"]
-[ext_resource type="PackedScene" uid="uid://bnvt4kxpvemxo" path="res://WallPair.tscn" id="3_bdro6"]
+[ext_resource type="Script" uid="uid://5qvnq67tlxgk" path="res://Scripts/prototype.gd" id="1_7wcaf"]
+[ext_resource type="PackedScene" uid="uid://bnvt4kxpvemxo" path="res://Scenes/WallPair.tscn" id="3_bdro6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_170dk"]
 size = Vector2(20, 1080)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_1h0e5")
+script = ExtResource("1_7wcaf")
 
 [node name="Node2D" parent="." instance=ExtResource("3_bdro6")]
 position = Vector2(2500, 540)
-min_y_position = 50.0
-max_y_position = 1000.0
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-233, 540)
